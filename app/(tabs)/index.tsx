@@ -43,5 +43,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
+    ...Platform.select({
+      android: { color: "blue" },
+    }),
   },
 });
