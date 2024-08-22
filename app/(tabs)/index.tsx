@@ -5,6 +5,7 @@ import {
   View,
   Text,
   useWindowDimensions,
+  SafeAreaView,
 } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -15,36 +16,32 @@ import { ThemedView } from "@/components/ThemedView";
 export default function HomeScreen() {
   const appWidth = useWindowDimensions().width;
   const appHeight = useWindowDimensions().height;
+
   return (
-    <View style={styles.container}>
-      <View
-        style={[
-          styles.box,
-          {
-            width: appWidth > 500 ? "70%" : "90%",
-            height: appHeight > 600 ? "60%" : "90%",
-          },
-        ]}
-      >
-        <Text style={styles.text}>Dynamic UI</Text>
+    <SafeAreaView style={styles.safeContainer}>
+      <View style={styles.container}>
+        <View style={styles.box}>
+          <Text style={styles.text}>Safe Area View</Text>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: "plum",
+  },
   container: {
     backgroundColor: "plum",
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 20,
   },
   box: {
-    height: 300,
-    width: 300,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 20,
   },
-  text: {},
+  text: {
+    fontWeight: "bold",
+  },
 });
