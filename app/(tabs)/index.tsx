@@ -1,47 +1,33 @@
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  View,
-  Text,
-  useWindowDimensions,
-  SafeAreaView,
-} from "react-native";
+import { SafeAreaView, StyleSheet, ScrollView } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import PokemonCard from "@/components/PokemonCard";
 
 export default function HomeScreen() {
-  const appWidth = useWindowDimensions().width;
-  const appHeight = useWindowDimensions().height;
-
+  const pokoData = {
+    name: "Poko",
+    image: require("../../assets/images/favicon.png"),
+    type: "white",
+    hp: 23,
+    moves: ["move1", "Move2", "Move3"],
+    weaknesess: ["weaknesess1", "weaknesess2", "weaknesess3"],
+  };
   return (
-    <SafeAreaView style={styles.safeContainer}>
-      <View style={styles.container}>
-        <View style={styles.box}>
-          <Text style={styles.text}>Safe Area View</Text>
-        </View>
-      </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <PokemonCard {...pokoData} />
+        <PokemonCard {...pokoData} />
+        <PokemonCard {...pokoData} />
+        <PokemonCard {...pokoData} />
+        <PokemonCard {...pokoData} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeContainer: {
-    flex: 1,
-    backgroundColor: "plum",
-  },
   container: {
-    backgroundColor: "plum",
+    backgroundColor: "#f5f5f5",
     flex: 1,
-    paddingTop: 20,
-  },
-  box: {
-    padding: 20,
-  },
-  text: {
-    fontWeight: "bold",
+    paddingTop: 50,
   },
 });
