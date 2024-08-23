@@ -1,9 +1,22 @@
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Image, Platform, StyleSheet, Text, View } from "react-native";
 
-const PokemonCard = () => {
+const PokemonCard = ({ name, image, type, hp, moves, weaknesess }: any) => {
   return (
     <View style={styles.card}>
-      <Text>Pokemon card</Text>
+      <View style={styles.view}>
+        <Text style={styles.name}>Name:{name}</Text>
+        <Text style={styles.name}>HP:{hp}</Text>
+      </View>
+      <Image source={image} accessibilityLabel="image" style={styles.iamge} />
+      <View>
+        <Text style={styles.others}>Type: {type}</Text>
+      </View>
+      <View>
+        <Text style={styles.others}>Moves: {moves.join(",")}</Text>
+      </View>
+      <View>
+        <Text style={styles.others}>Weaknesess: {weaknesess.join(",")}</Text>
+      </View>
     </View>
   );
 };
@@ -28,5 +41,24 @@ const styles = StyleSheet.create({
         elevation: 5,
       },
     }),
+  },
+
+  view: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  name: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  others: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  iamge: {
+    height: 100,
+    width: 100,
+    alignSelf: "center",
+    margin: 15,
   },
 });
